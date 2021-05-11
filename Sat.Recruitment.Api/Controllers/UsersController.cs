@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Sat.Recruitment.Api.Helper.Interfaces;
 using Sat.Recruitment.Api.Models;
-using Sat.Recruitment.Api.Models.Enum;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace Sat.Recruitment.Api.Controllers

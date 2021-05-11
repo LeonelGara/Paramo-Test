@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Dynamic;
-
-using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Sat.Recruitment.Api.Controllers;
 using Sat.Recruitment.Api.Helper.Interfaces;
