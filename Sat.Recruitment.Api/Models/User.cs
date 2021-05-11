@@ -38,25 +38,25 @@ namespace Sat.Recruitment.Api.Models
         {
             decimal percentage = 0;
             decimal gif = 0;
-            switch (UserType)
-            {
-                case UserType.Normal:
-                    if (Money > 100)
+
+            if (Money > 100)
+                switch (UserType)
+                {
+                    case UserType.Normal:
                         percentage = Convert.ToDecimal(0.12);
-                    else if (Money > 10)
-                        percentage = Convert.ToDecimal(0.8);
-                    break;
-                case UserType.Premium:
-                    if (Money > 100)
+                        break;
+                    case UserType.Premium:
                         gif = Money * 2;
-                    break;
-                case UserType.SuperUser:
-                    if (Money > 100)
+                        break;
+                    case UserType.SuperUser:
                         percentage = Convert.ToDecimal(0.20);
-                    break;
-                default:
-                    break;
-            }
+                        break;
+                    default:
+                        break;
+                }
+            else if (Money > 10 && UserType.Normal == UserType)
+                percentage = Convert.ToDecimal(0.8);
+
             if (percentage != 0)
                 gif = Money * percentage;
 
