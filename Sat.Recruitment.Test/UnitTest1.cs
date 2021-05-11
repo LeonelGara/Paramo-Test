@@ -55,6 +55,9 @@ namespace Sat.Recruitment.Test
 
             var result = userController.CreateUser(user).Result;
 
+            user.NormalizeEmail();
+            user.CalculateMoneyByUserType();
+
             IReaderMock.Verify();
             Assert.True(result.IsSuccess);
             Assert.Equal("User Created", result.Message);
@@ -100,9 +103,11 @@ namespace Sat.Recruitment.Test
 
             var result = userController.CreateUser(user).Result;
 
+            user.NormalizeEmail();
             IReaderMock.Verify();
             Assert.False(result.IsSuccess);
             Assert.Equal("The user is duplicated", result.Message);
+            Assert.Throws<Exception>(() => user.ValidateIfUserIsDuplicated(userList));
         }
 
         [Fact]
@@ -147,6 +152,7 @@ namespace Sat.Recruitment.Test
 
             Assert.False(result.IsSuccess);
             Assert.Equal("The name is required The email is required The address is required The phone is required", result.Message);
+            Assert.Throws<Exception>(() => user.ValidateUser());
         }
     }
 }
